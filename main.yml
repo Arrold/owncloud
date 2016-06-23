@@ -4,7 +4,7 @@
   gather_facts: False
   connection: local
   roles:
-    - { role: infra, tags:['clc']}
+    - { role: infra, tags:['clc'] }
 
 - name: Install and configure MySQL
   hosts: oc_servers
