@@ -4,16 +4,19 @@
   gather_facts: False
   connection: local
   roles:
-    - { role: infra, tags:['clc'] }
+    - role: infra
+      tags: clc
 
 - name: Install and configure MySQL
   hosts: oc_servers
   gather_facts: True
   roles:
-    - { role: mysql, tag:['db'] }
+    - role: mysql
+      tag: db
 
 - name: Install Owncloud
   hosts: oc_servers
   gather_facts: False
   roles:
-    - { role: owncloud, tags:['always'] }
+    - role: owncloud
+      tags: always
