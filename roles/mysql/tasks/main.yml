@@ -11,6 +11,8 @@
 
 - name: Deletes anonymous MySQL server user for localhost
   mysql_user: user="" state="absent" login_password="{{ mysqlpass }}" login_user=root
+  tags:
+    - db
 
 - name: Secures the MySQL root user
   mysql_user: name="root" password="{{ mysqlpass }}" host="{{ item }}"  priv=*.*:ALL
