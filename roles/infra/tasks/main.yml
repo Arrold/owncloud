@@ -1,6 +1,6 @@
 - name: create owncloud Group
   clc_group:
-    location: 'UC1'
+    location: 'GB3'
     name: 'owncloud'
     state: present
   register: clc_grp
