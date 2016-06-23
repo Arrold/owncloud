@@ -22,7 +22,7 @@
     template: ubuntu-14-64
     count: 1
     group: "{{ clc_grp.group.name }}"
-    location: 'UC1'
+    location: 'GB3'
     password: "{{ serverpass.stdout }}"
   register: clc_svr
   tags:
