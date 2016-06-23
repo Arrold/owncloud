@@ -2,5 +2,4 @@
 ocpath: "{{ ocpath }}"
 htuser: "{{ htuser }}"
 htgroup: "{{ htgroup }}"
-domainip: "{{ domainip }}"
 rootuser: "{{ rootuser }}"
