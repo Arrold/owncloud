@@ -8,7 +8,7 @@
 
 - name: Install and configure MySQL
   hosts: oc_servers
-  gather_facts: False
+  gather_facts: True
   roles:
     - { role: mysql, tag:['db'] }
 
