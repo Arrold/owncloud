@@ -1,6 +1,6 @@
 - name: create owncloud Group
   clc_group:
-    location: 'GB3'
+    location: 'UC1'
     name: 'owncloud'
     state: present
   register: clc_grp
@@ -21,7 +21,7 @@
     name: ocld
     template: ubuntu-14-64
     count: 1
-    group: "{{ clc_grp.group.name }}"   
+    group: "{{ clc_grp.group.name }}"
     location: 'UC1'
     password: "{{ serverpass.stdout }}"
   register: clc_svr

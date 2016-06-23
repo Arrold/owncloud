@@ -13,12 +13,10 @@
   mysql_user: user="" state="absent" login_password="{{ mysqlpass }}" login_user=root
 
 - name: Secures the MySQL root user
-  mysql_user: user="root" password="{{ mysqlpass }}" host="{{ item }}" login_password="{{ mysqlpass }}" login_user=root
+  mysql_user: name="root" password="{{ mysqlpass }}" host="{{ item }}"  priv=*.*:ALL
   with_items:
     - 127.0.0.1
     - localhost
-    - ::1
-    - "{{ ansible_fqdn }}"
   tags:
     - db
 
@@ -32,4 +30,3 @@
   tags:
     - db
   notify: Restart MySQL
-
