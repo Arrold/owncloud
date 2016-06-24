@@ -1,5 +1,5 @@
 - name: Install list of packages
-  apt: name={{ item }} state=present
+  apt: name={{ item }} update_cache=yes state=installed
   with_items:
     - apache2
     - ibapache2-mod-php5
