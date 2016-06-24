@@ -38,10 +38,7 @@
   tags:
     - always
 
-- name: Fourth list of packages
-  apt:
-    name: php5-apcu/trusty-backports
-    update_cache: yes
-    state: present
+- name: Run manual install of php5-apcu/trusty-backports
+  shell: apt-get install -y php5-apcu/trusty-backports
   tags:
     - always
