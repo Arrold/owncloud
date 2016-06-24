@@ -22,17 +22,11 @@
       - 127.0.0.1
       - ::1
       - localhost
-
-- name: Deletes anonymous MySQL server user for localhost
-  mysql_user: user="" state="absent" login_password="{{ mysqlpass }}" login_user=root
   tags:
     - db
 
-- name: Secures the MySQL root user
-  mysql_user: name="root" password="{{ mysqlpass }}" host="{{ item }}"  priv=*.*:ALL
-  with_items:
-    - 127.0.0.1
-    - localhost
+- name: Deletes anonymous MySQL server user for localhost
+  mysql_user: user="" state="absent" login_password="{{ mysqlpass }}" login_user=root
   tags:
     - db
 
