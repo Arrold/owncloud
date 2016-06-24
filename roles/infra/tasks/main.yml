@@ -1,3 +1,4 @@
+---
 - name: create owncloud Group
   clc_group:
     location: 'UC1'

@@ -1,3 +1,4 @@
+---
 - name: Add repo key
   shell: wget -nv https://download.owncloud.org/download/repositories/stable/Ubuntu_14.10/Release.key -O Release.key; apt-key add - < Release.key
   tags:
