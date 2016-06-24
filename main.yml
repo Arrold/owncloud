@@ -5,18 +5,29 @@
   connection: local
   roles:
     - role: infra
-      tags: clc
+      tags:
+        - clc
+
+- name: Get additional packages
+  hosts: oc_servers
+  gather_facts: True
+  roles:
+    - role: packages
+      tag:
+        - packages
 
 - name: Install and configure MySQL
   hosts: oc_servers
   gather_facts: True
   roles:
     - role: mysql
-      tag: db
+      tag:
+        - db
 
 - name: Install Owncloud
   hosts: oc_servers
   gather_facts: False
   roles:
     - role: owncloud
-      tags: always
+      tags:
+        - owncloud
