@@ -1,19 +1,44 @@
 ---
-- name: Install list of packages
+- name: First list of packages
   apt:
     name: "{{ item }}"
     update_cache: yes
-    state: installed
+    state: present
   with_items:
     - apache2
     - libapache2-mod-php5
+  tags:
+    - always
+
+- name: Second list of packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items:
     - php5-gd
     - php5-json
     - php5-mysql
     - php5-curl
+  tags:
+    - always
+
+- name: Third list of packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items:
     - php5-intl
     - php5-mcrypt
     - php5-imagick
-    - php5-apcu/trusty-backports
+  tags:
+    - always
+
+- name: Third list of packages
+  apt:
+    name: php5-apcu/trusty-backports
+    update_cache: yes
+    state: present
   tags:
     - always
