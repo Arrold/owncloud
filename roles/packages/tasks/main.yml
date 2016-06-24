@@ -16,3 +16,8 @@
     - php5-imagick
   tags:
     - always
+
+- name: Run manual install of php5-apcu/trusty-backports
+  shell: apt-get install -y php5-apcu/trusty-backports
+  tags:
+    - always
