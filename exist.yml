@@ -1,0 +1,14 @@
+---
+- name: Install and configure MySQL
+  hosts: "{{ oc_server }}"
+  gather_facts: True
+  roles:
+    - role: mysql
+      tag: db
+
+- name: Install Owncloud
+  hosts: "{{ oc_server }}"
+  gather_facts: False
+  roles:
+    - role: owncloud
+      tags: always
