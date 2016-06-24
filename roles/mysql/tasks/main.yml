@@ -11,14 +11,14 @@
 - name: Update mysql root password
   mysql_user:
     name: root
-    host: "{{ item }}"
+    host: {{ item }}
     password: "{{ mysqlpass }}"
     login_user: root
     login_password: "{{ mysqlpass }}"
     check_implicit_admin: yes
     priv: "*.*:ALL,GRANT"
     with_items:
-      - "{{clc_svr}}"
+      - "{{ clc_svr }}"
       - 127.0.0.1
       - ::1
       - localhost
