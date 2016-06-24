@@ -2,4 +2,3 @@
 ocpath: "{{ ocpath }}"
 htuser: "{{ htuser }}"
 htgroup: "{{ htgroup }}"
-rootuser: "{{ rootuser }}"
