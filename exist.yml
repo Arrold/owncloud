@@ -4,7 +4,7 @@
   gather_facts: False
   roles:
     - role: packages
-      tag: pkg
+      tag: always
 
 - name: Install and configure MySQL
   hosts: all
