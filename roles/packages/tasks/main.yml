@@ -1,4 +1,4 @@
-- name: Install list of packages one
+- name: Install list of packages
   apt:
     name: "{{ item }}"
     state: present
