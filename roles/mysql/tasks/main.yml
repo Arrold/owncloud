@@ -8,30 +8,28 @@
   tags:
     - db
 
+- name: Deletes anonymous MySQL server user for host
+  mysql_user: user="" state="absent" host="{{ clc_srv }}"
+  tags:
+    - db
+
+- name: Deletes anonymous MySQL server user for localhost
+  mysql_user: user="" state="absent"
+  tags:
+    - db
+
+- name: Removes the MySQL test database
+  mysql_db: name=test state=absent
+  tags:
+    - db
+
 - name: Update mysql root password
-  mysql_user:
-    name: root
-    host: "{{item}}"
-    password: "{{ mysqlpass }}"
-    login_user: root
-    login_password: "{{ mysqlpass }}"
-    check_implicit_admin: yes
-    priv: "*.*:ALL,GRANT"
+  mysql_user: name: root host: {{ item }} password: "{{ mysqlpass }}" login_user: root login_password: "" check_implicit_admin: yes priv: "*.*:ALL,GRANT"
     with_items:
       - "{{ clc_svr }}"
       - 127.0.0.1
       - ::1
       - localhost
-  tags:
-    - db
-
-- name: Deletes anonymous MySQL server user for localhost
-  mysql_user: user="" state="absent" login_password="{{ mysqlpass }}" login_user=root
-  tags:
-    - db
-
-- name: Removes the MySQL test database
-  mysql_db: name=test state=absent login_password="{{ mysqlpass }}" login_user=root
   tags:
     - db
 
