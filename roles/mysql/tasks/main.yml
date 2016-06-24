@@ -11,7 +11,7 @@
 - name: Update mysql root password
   mysql_user:
     name: root
-    host: {{ item }}
+    host: "{{ item }}"
     password: "{{ mysqlpass }}"
     login_user: root
     login_password: "{{ mysqlpass }}"
