@@ -1,1 +1,2 @@
 mysqlpass: "{{ mysqlpass }}"
+clc_srv: "{{ clc_svr }}"
