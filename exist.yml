@@ -1,14 +1,14 @@
 ---
 - name: Get additional packages
   hosts: all
-  gather_facts: True
+  gather_facts: False
   roles:
     - role: packages
       tag: always
 
 - name: Install and configure MySQL
   hosts: all
-  gather_facts: True
+  gather_facts: False
   roles:
     - role: mysql
       tag: db
