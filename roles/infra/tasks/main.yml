@@ -24,6 +24,8 @@
     group: "{{ clc_grp.group.name }}"
     location: 'GB3'
     password: "{{ serverpass.stdout }}"
+    cpu: 4
+    memory: 8
   register: clc_svr
   tags:
     - clc
