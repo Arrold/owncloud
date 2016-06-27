@@ -1,14 +1,8 @@
 ---
-- name: Get additional packages
+- name: Copy mysql.ini and owncloud.conf files over
   hosts: all
   gather_facts: False
   roles:
-    - role: packages
-      tag: always
-
-- name: Install and configure MySQL
-  hosts: all
-  gather_facts: True
-  roles:
-    - role: mysql
-      tag: db
+    - role: file_xfer
+      tags:
+        - always

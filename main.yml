@@ -14,7 +14,7 @@
   roles:
     - role: packages
       tag:
-        - packages
+        - always
 
 - name: Install and configure MySQL
   hosts: oc_servers
@@ -31,3 +31,11 @@
     - role: owncloud
       tags:
         - owncloud
+
+- name: Copy mysql.ini and owncloud.conf files over
+  hosts: oc_servers
+  gather_facts: False
+  roles:
+    - role: file_xfer
+      tags:
+        - always
