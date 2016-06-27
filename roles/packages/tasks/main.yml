@@ -45,3 +45,5 @@
 
 - name: Equivilent of apt-get upgrade
   apt: upgrade=dist
+  tags:
+    - always

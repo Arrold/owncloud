@@ -1,6 +1,8 @@
 ---
 - name: Make /etc/php5/conf.d
   file: path=/etc/php5/conf.d state=directory
+  tags:
+    - always
 
 - name: Copy file to /etc/php5/conf.d/mysql.ini
   copy: src=files/mysql.ini dest=/etc/php5/conf.d/mysql.ini
@@ -27,8 +29,9 @@
     - always
 
 - name: Modify file and directory modes
-  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640
-  shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
+  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640 && find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
+  tags:
+    - always
 
 - name: Modify permissions on ocpath root
   file: path=/{{ ocpath }} state=directory owner=root group={{ htgroup }}
@@ -42,7 +45,10 @@
 
 - name: Grant executer priviledges
   shell: chmod +x {{ ocpath }}/occ
+  tags:
+    - always
 
 - name: Call a script
-  shell: if [ -f {{ ocpath }}/.htaccess ]; then chmod 0644 {{ ocpath }}/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/.htaccess; fi
-  shell: if [ -f {{ ocpath }}/data/.htaccess ]; then chmod 0644 {{ ocpath }}/data/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/data/.htaccess; fi
+  shell: if [ -f {{ ocpath }}/.htaccess ]; then chmod 0644 {{ ocpath }}/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/.htaccess; fi && if [ -f {{ ocpath }}/data/.htaccess ]; then chmod 0644 {{ ocpath }}/data/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/data/.htaccess; fi
+  tags:
+    - always

@@ -1,21 +1,31 @@
 ---
 - name: Create directories
   file: path=/datatemp/www state=directory
+  tags:
+    - owncloud
 
 - name: Download owncloud
   shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
   args:
     chdir: /datatemp
+  tags:
+    - owncloud
 
 - name: Sumcheck the Tarball
   shell: md5sum -c owncloud-9.0.2.tar.bz2.md5 < owncloud-9.0.2.tar.bz2
   args:
     chdir: /datatemp
+  tags:
+    - owncloud
 
 - name: Extract the Tarball
   shell: tar -xjf owncloud-9.0.2.tar.bz2
   args:
     chdir: /datatemp
+  tags:
+    - owncloud
 
 - name: Copy data to wwwroot
   shell: cp -r /datatemp/owncloud /datatemp/www/
+  tags:
+    - owncloud
