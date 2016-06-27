@@ -7,13 +7,13 @@
 #      tag:
 #        - always
 
-- name: Install Owncloud
-  hosts: all
-  gather_facts: False
-  roles:
-    - role: owncloud
-      tags:
-        - owncloud
+#- name: Install Owncloud
+#  hosts: all
+#  gather_facts: False
+#  roles:
+#    - role: owncloud
+#      tags:
+#        - owncloud
 
 - name: Copy mysql.ini and owncloud.conf files over
   hosts: all
