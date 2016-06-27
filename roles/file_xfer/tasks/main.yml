@@ -1,3 +1,7 @@
+---
+- name: Make /etc/php5/conf.d
+  file: path=/etc/php5/conf.d state=directory
+
 - name: Copy file to /etc/php5/conf.d/mysql.ini
   copy: src=files/mysql.ini dest=/etc/php5/conf.d/mysql.ini
   tags:

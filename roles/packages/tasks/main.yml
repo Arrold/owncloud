@@ -42,3 +42,6 @@
   shell: apt-get install -y php5-apcu/trusty-backports
   tags:
     - always
+
+- name: Equivilent of apt-get upgrade
+  apt: upgrade=dist
