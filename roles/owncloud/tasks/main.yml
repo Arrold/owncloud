@@ -4,21 +4,28 @@
   tags:
     - owncloud
 
-- name: Download owncloud
-  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
+- name: Download owncloud tarball
+  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2
   args:
     chdir: /datatemp
   tags:
     - owncloud
 
-- name: Sumcheck the Tarball
+- name: Download owncloud tarball md5 file
+  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
+  args:
+    chdir: /datatemp
+  tags:
+    - owncloud
+
+- name: Sumcheck the tarball
   shell: md5sum -c owncloud-9.0.2.tar.bz2.md5 < owncloud-9.0.2.tar.bz2
   args:
     chdir: /datatemp
   tags:
     - owncloud
 
-- name: Extract the Tarball
+- name: Extract the tarball
   shell: tar -xjf owncloud-9.0.2.tar.bz2
   args:
     chdir: /datatemp

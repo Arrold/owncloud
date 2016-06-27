@@ -28,8 +28,13 @@
   tags:
     - always
 
-- name: Modify file and directory modes
-  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640 && find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
+- name: Modify file and directory modes one
+  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640
+  tags:
+    - always
+
+- name: Modify file and directory modes two
+  shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
   tags:
     - always
 
@@ -48,7 +53,12 @@
   tags:
     - always
 
-- name: Call a script
-  shell: if [ -f {{ ocpath }}/.htaccess ]; then chmod 0644 {{ ocpath }}/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/.htaccess; fi && if [ -f {{ ocpath }}/data/.htaccess ]; then chmod 0644 {{ ocpath }}/data/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/data/.htaccess; fi
+- name: Modify .htaccess permissions one
+  shell: if [ -f {{ ocpath }}/.htaccess ]; then chmod 0644 {{ ocpath }}/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/.htaccess; fi
+  tags:
+    - always
+
+- name: Modify .htaccess permissions two
+  shell: if [ -f {{ ocpath }}/data/.htaccess ]; then chmod 0644 {{ ocpath }}/data/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/data/.htaccess; fi
   tags:
     - always
