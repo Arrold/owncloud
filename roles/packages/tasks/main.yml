@@ -45,6 +45,13 @@
   tags:
     - always
 
+- name: Install postfix
+  apt:
+    name: postfix
+    state: present
+  tags:
+    - always
+
 - name: Equivilent of apt-get upgrade
   apt: upgrade=dist
   tags:

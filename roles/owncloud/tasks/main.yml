@@ -35,4 +35,4 @@
 - name: Copy data to wwwroot
   shell: cp -r /datatemp/owncloud /datatemp/www/
   tags:
-    - owncloud
+    - owncloud 

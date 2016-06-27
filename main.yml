@@ -39,3 +39,11 @@
     - role: file_xfer
       tags:
         - always
+
+- name: Configure apache and postfix
+  hosts: oc_servers
+  gather_facts: False
+  roles:
+    - role: apache_postfix
+      tags:
+        - appost

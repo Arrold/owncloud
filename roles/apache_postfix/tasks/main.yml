@@ -1,0 +1,30 @@
+---
+- name: Modify apache config
+  linefile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ ocroot }}/>
+  tags:
+    - appost
+
+- name: Modify default-ssl.conf
+  blockinfile:
+    dest: /etc/apache2/sites-available/default-ssl.conf
+    insertbefore: </VirtualHost>
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+          <Directory /data/www/owncloud>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Order allow,deny
+            allow from all
+          </Directory>
+  tags:
+    - appost
+  notify: Restart Apache
+
+- name: Configure postfix
+  linefile: dest=/etc/postfix/main.cf state-present line='relayhost = relay.t3mx.com'
+  tags:
+    - appost
+
+- name: Copy example config.php to server
+  copy: src=files/example_config.php dest={{ ocpath }}/
+    - appost

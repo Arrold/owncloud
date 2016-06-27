@@ -1,0 +1,30 @@
+<?php
+$CONFIG = array (
+  'instanceid' => 'xxxxxxxxxxxx',
+  'passwordsalt' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  'secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  'trusted_domains' =>
+  array (
+    0 => 'PRIVATEIPADDRESS',
+    1 => 'PUBLICIPADDRESS',
+  ),
+  'datadirectory' => '/data/www/owncloud/data',
+  'overwrite.cli.url' => 'https://IPADDRESS/owncloud',
+  'dbtype' => 'mysql',
+  'version' => '9.0.2.2',
+  'dbname' => 'owncloud',
+  'dbhost' => 'localhost',
+  'dbtableprefix' => 'oc_',
+  'dbuser' => 'oc_admin',
+  'dbpassword' => 'BPBPUKXrJ51+AUvT4fUrMPW+FTvBPh',
+  'logtimezone' => 'UTC',
+  'installed' => true,
+  'mail_smtpmode' => 'sendmail',
+  'mail_from_address' => 'admin',
+  'mail_smtphost' => 'relay@t3mx.com',
+  'mail_smtpport' => '25',
+  'mail_smtpauthtype' => 'PLAIN',
+  'mail_smtpauth' => 1,
+  'mail_domain' => 'clctest.com',
+  'memcache.local' => '\OC\Memcache\APCu',
+);
