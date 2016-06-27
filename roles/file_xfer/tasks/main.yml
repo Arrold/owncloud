@@ -29,12 +29,14 @@
     - always
 
 - name: Modify file and directory modes one
-  command: for i in $(find {{ ocpath }}/ -type f); do chmod 0640 $i; done
+  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640
+#  shell: for i in $(find {{ ocpath }}/ -type f); do chmod 0640 $i; done
   tags:
     - always
 
 - name: Modify file and directory modes two
-  command: for i in $(find {{ ocpath }}/ -type d); do chmod 0750 $i; done
+  shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
+#  shell: for i in $(find {{ ocpath }}/ -type d); do chmod 0750 $i; done
   tags:
     - always
 
