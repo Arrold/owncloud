@@ -1,16 +1,16 @@
 ---
-- name: create owncloud Group
-  clc_group:
-    location: 'UC1'
-    name: owncloud
-    state: present
-  register: clc_grp
-  tags:
-    - clc
-
-- debug: var=clc_grp
-
-- debug: msg="Group Name is {{ clc_grp.group.name }}"
+#- name: create owncloud Group
+#  clc_group:
+#    location: 'UC1'
+#    name: owncloud
+#    state: present
+#  register: clc_grp
+#  tags:
+#    - clc
+#
+#- debug: var=clc_grp
+#
+#- debug: msg="Group Name is {{ clc_grp.group.name }}"
 
 - name: Generate password for server
   command: openssl rand -base64 15
