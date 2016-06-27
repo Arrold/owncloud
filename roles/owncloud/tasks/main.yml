@@ -1,22 +1,21 @@
 ---
-- name: Add repo key
-  shell: wget -nv https://download.owncloud.org/download/repositories/stable/Ubuntu_14.10/Release.key -O Release.key; apt-key add - < Release.key
-  tags:
-    - always
+- name: Create directories
+  file: path=/datatemp/www state=directory
 
-- name: Add repo to sources list
-  shell: sh -c "echo 'deb http://download.owncloud.org/download/repositories/stable/Ubuntu_14.10/ /' >> /etc/apt/sources.list.d/owncloud.list"
-  tags:
-    - always
+- name: Download owncloud
+  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
+  args:
+    chdir: /datatemp
 
-- name: update
-  apt: update_cache=yes
-  tags:
-    - always
+- name: Sumcheck the Tarball
+  shell: md5sum -c owncloud-9.0.2.tar.bz2.md5 < owncloud-9.0.2.tar.bz2
+  args:
+    chdir: /datatemp
 
-- name: install
-  apt:
-    name: owncloud-files
-    state: present
-  tags:
-    - always
+- name: Extract the Tarball
+  shell: tar -xjf owncloud-9.0.2.tar.bz2
+  args:
+    chdir: /datatemp
+
+- name: Copy data to wwwroot
+  shell: cp -r /datatemp/owncloud /datatemp/www/

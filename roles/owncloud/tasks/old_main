@@ -1,0 +1,22 @@
+---
+- name: Add repo key
+  shell: wget -nv https://download.owncloud.org/download/repositories/stable/Ubuntu_14.10/Release.key -O Release.key; apt-key add - < Release.key
+  tags:
+    - always
+
+- name: Add repo to sources list
+  shell: sh -c "echo 'deb http://download.owncloud.org/download/repositories/stable/Ubuntu_14.10/ /' >> /etc/apt/sources.list.d/owncloud.list"
+  tags:
+    - always
+
+- name: update
+  apt: update_cache=yes
+  tags:
+    - always
+
+- name: install
+  apt:
+    name: owncloud-files
+    state: present
+  tags:
+    - always
