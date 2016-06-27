@@ -1,11 +1,11 @@
 ---
-- name: Get additional packages
-  hosts: all
-  gather_facts: True
-  roles:
-    - role: packages
-      tag:
-        - always
+#- name: Get additional packages
+#  hosts: all
+#  gather_facts: True
+#  roles:
+#    - role: packages
+#      tag:
+#        - always
 
 - name: Copy mysql.ini and owncloud.conf files over
   hosts: all
