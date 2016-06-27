@@ -1,5 +1,5 @@
 - name: Copy file to /etc/php5/conf.d/mysql.ini
-  copy: src=files/pmysql.ini dest=/etc/php5/conf.d/mysql.ini
+  copy: src=files/mysql.ini dest=/etc/php5/conf.d/mysql.ini
   tags:
     - always
 
