@@ -1,12 +1,4 @@
 ---
-- name: Install and configure MySQL
-  hosts: all
-  gather_facts: True
-  roles:
-    - role: mysql
-      tag:
-        - db
-
 - name: Get additional packages
   hosts: all
   gather_facts: True
