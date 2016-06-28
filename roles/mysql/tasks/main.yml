@@ -8,21 +8,6 @@
   tags:
     - db
 
-- name: Deletes anonymous MySQL server user for host
-  mysql_user: user="" state="absent"
-  tags:
-    - db
-
-- name: Deletes anonymous MySQL server user for localhost
-  mysql_user: user="" state="absent"
-  tags:
-    - db
-
-- name: Removes the MySQL test database
-  mysql_db: name=test state=absent
-  tags:
-    - db
-
 - name: Update mysql root password
   mysql_user:
     name: root
@@ -40,8 +25,31 @@
   tags:
     - db
 
-- name: Modify mysql.ini to include new password
-  lineinfile: dest=/etc/php5/conf.d/mysql.ini state=present line='mysql.default_password=W1mB13'
+- name: Make the .my.cnf
+  file: path=/root/my.cnf state=touch mode="0640"
+
+- name: Add content to .my.cnf
+  blockinfile:
+    dest: /root/.my.cnf
+    block: |
+      [client]
+      user=root
+      password='"{{ mysqlpass }}"'
+
+- name: Deletes anonymous MySQL server user for host
+  mysql_user: user="" state="absent"
+  tags:
+    - db
+
+- name: Deletes anonymous MySQL server user for localhost
+  mysql_user: user="" state="absent"
+  tags:
+    - db
+
+- name: Removes the MySQL test database
+  mysql_db: name=test state=absent
+  tags:
+    - db
 
 - name: Create an owncloud database
   mysql_db: name=owncloud state=present
