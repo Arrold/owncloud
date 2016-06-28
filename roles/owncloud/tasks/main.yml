@@ -7,7 +7,7 @@
 - name: Download owncloud
   shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
   args:
-    chdir: {{ ocroot }}
+    chdir: "{{ ocroot }}"
 
 #- name: Download owncloud tarball
 #  get_url: https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest=/{{ ocroot }}/owncloud-9.0.2.tar.bz2 checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
