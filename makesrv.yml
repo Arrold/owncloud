@@ -1,6 +1,6 @@
 ---
 - name: Create infrastructure
-  hosts: all
+  hosts: localhost
   gather_facts: False
   connection: local
   roles:
