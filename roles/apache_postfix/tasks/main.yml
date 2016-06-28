@@ -1,6 +1,6 @@
 ---
 - name: Modify apache config
-  linefile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ permpath }}/>
+  lineinfile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ permpath }}/>
   tags:
     - appost
 
@@ -38,7 +38,7 @@
   notify: Restart Apache
 
 - name: Configure postfix
-  linefile: dest=/etc/postfix/main.cf state=present line='relayhost = relay.t3mx.com'
+  lineinfile: dest=/etc/postfix/main.cf state=present line='relayhost = relay.t3mx.com'
   tags:
     - appost
 
