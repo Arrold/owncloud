@@ -40,9 +40,11 @@
   tags:
     - db
 
+- name: Modify mysql.ini to include new password
+  linefile: dest=/etc/php5/conf.d/mysql.ini state=present line='mysql.default_password={{ mysqlpass }}'
+
 - name: Create an owncloud database
-  mysql_db: name=owncloud state=present login_password="{{ mysqlpass }}" login_user=root
+  mysql_db: name=owncloud state=present login_user=root
   tags:
     - db
   notify: Restart MySQL
-  

@@ -21,7 +21,7 @@
   notify: Restart Apache
 
 - name: Configure postfix
-  linefile: dest=/etc/postfix/main.cf state-present line='relayhost = relay.t3mx.com'
+  linefile: dest=/etc/postfix/main.cf state=present line='relayhost = relay.t3mx.com'
   tags:
     - appost
 
