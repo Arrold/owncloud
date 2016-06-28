@@ -27,6 +27,8 @@
 
 - name: Make the .my.cnf
   file: path=/root/my.cnf state=touch mode="0640"
+  tags:
+    - db
 
 - name: Add content to .my.cnf
   blockinfile:
@@ -35,6 +37,8 @@
       [client]
       user=root
       password="{{ mysqlpass }}"
+  tags:
+    - db
 
 - name: Deletes anonymous MySQL server user for host
   mysql_user: user="" state="absent"
