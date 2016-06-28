@@ -4,6 +4,23 @@
   tags:
     - appost
 
+- name: Install apache modules
+  apache2_module: state=present name:{{ item }}
+  with_items:
+    - rewrite
+    - headers
+    - env
+    - dir
+    - mime
+    - ssl
+  tags:
+    - appost
+
+- name: Enable apache site
+  shell: a2ensite default-ssl
+  tags:
+    - appost
+
 - name: Modify default-ssl.conf
   blockinfile:
     dest: /etc/apache2/sites-available/default-ssl.conf
