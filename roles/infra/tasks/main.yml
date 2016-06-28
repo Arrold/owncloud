@@ -27,7 +27,7 @@
     count_group: owncloud
     group: owncloud
     location: 'UC1'
-    network: 'vlan_200_10.120.0'
+    network: 'vlan_1287_10.122.187'
     password: "{{ serverpass.stdout }}"
     cpu: 4
     memory: 8
