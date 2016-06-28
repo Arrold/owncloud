@@ -12,7 +12,7 @@
   mysql_user:
     name: root
     host: "{{ item }}"
-    password: "W1mB13"
+    password: "{{ mysqlpass }}"
     login_user: root
     login_password: ""
     check_implicit_admin: yes
@@ -34,7 +34,7 @@
     block: |
       [client]
       user=root
-      password='"{{ mysqlpass }}"'
+      password="{{ mysqlpass }}"
 
 - name: Deletes anonymous MySQL server user for host
   mysql_user: user="" state="absent"
