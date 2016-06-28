@@ -43,5 +43,5 @@
     - appost
 
 - name: Copy example config.php to server
-  copy: src=files/example_config.php dest={{ permpath }}/
+  copy: src=files/example_config.php dest={{ ocpath }}/
     - appost
