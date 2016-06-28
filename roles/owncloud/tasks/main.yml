@@ -1,22 +1,26 @@
 ---
 - name: Create directories
-  file: path=/{{ ocroot }}/www state=directory
+  file: path={{ ocroot }}/www state=directory
   tags:
     - owncloud
 
-- name: Download owncloud tarball
-  get_url: https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2
-#  dest=/{{ ocroot }}/owncloud-9.0.2.tar.bz2 checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
-  tags:
-    - owncloud
+- name: Download owncloud
+  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
+  args:
+    chdir: {{ ocroot }}
+
+#- name: Download owncloud tarball
+#  get_url: https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest=/{{ ocroot }}/owncloud-9.0.2.tar.bz2 checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
+#  tags:
+#    - owncloud
 
 - name: Extract the tarball
-#  unarchive: src=/{{ ocroot }}/owncloud-9.0.2.tar.bz2 dest=/{{ ocroot }}/
-  unarchive: src=owncloud-9.0.2.tar.bz2 dest=/{{ ocroot }}/
+  unarchive: src={{ ocroot }}/owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
+#  unarchive: src=owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
   tags:
     - owncloud
 
 - name: Copy data to wwwroot
-  shell: cp -r /{{ ocroot }}/owncloud /{{ ocroot }}/www/
+  shell: cp -r {{ ocroot }}/owncloud {{ ocroot }}/www/
   tags:
     - owncloud
