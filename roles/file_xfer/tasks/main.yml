@@ -39,12 +39,12 @@
     - always
 
 - name: Modify permissions on ocpath
-  file: path=/{{ ocpath }} state=directory owner=root group={{ htgroup }}
+  file: path={{ ocpath }} state=directory owner=root group={{ htgroup }}
   tags:
     - always
 
 - name: Modify permissions on ocpath subdirs
-  file: path=/{{ ocpath }}/{{ item }} state=directory owner={{ htuser }} group={{ htgroup }}
+  file: path={{ ocpath }}/{{ item }} state=directory owner={{ htuser }} group={{ htgroup }}
   with_items:
     - apps
     - config
