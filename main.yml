@@ -13,7 +13,7 @@
   gather_facts: True
   roles:
     - role: mysql
-      tag:
+      tags:
         - db
 
 - name: Get additional packages
@@ -21,8 +21,8 @@
   gather_facts: True
   roles:
     - role: packages
-      tag:
-        - always
+      tags:
+        - packages
 
 - name: Install Owncloud
   hosts: oc_servers
@@ -38,7 +38,7 @@
   roles:
     - role: file_xfer
       tags:
-        - always
+        - config
 
 - name: Configure apache and postfix
   hosts: oc_servers

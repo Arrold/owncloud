@@ -1,2 +1,3 @@
 ---
- mysqlpass: "{{ mysql_root_pass }}"
+ # mysqlpass: "{{ mysql_root_pass }}"
+ mysqlpass: abc123!@#

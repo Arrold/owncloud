@@ -1,5 +1,9 @@
 ---
-ocroot: "{{ owncloudroot }}"
-ocpath: "{{ owncloudpath }}"
-htuser: "{{ htaccess_user }}"
-htgroup: "{{ htaccess_group }}"
+#ocroot: "{{ owncloudroot }}"
+#ocpath: "{{ owncloudpath }}"
+#htuser: "{{ htaccess_user }}"
+#htgroup: "{{ htaccess_group }}"
+ocroot: "/datatemp"
+ocpath: "/datatemp/www/owncloud"
+htuser: "www-data"
+htgroup: "www-data"

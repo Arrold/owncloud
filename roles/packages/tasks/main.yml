@@ -57,7 +57,7 @@
   tags:
     - always
 
-- name: Wait for a while
-  pause: minutes=3
-  tags:
-    - always
+# - name: Wait for a while
+#  pause: minutes=3
+#  tags:
+#    - always

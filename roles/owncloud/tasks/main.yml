@@ -14,9 +14,8 @@
   tags:
     - owncloud
 
-- name: Extract the tarball
-  unarchive: src={{ ocroot }}/owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
-#  unarchive: src=owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
+- name: unzip the bzip
+  command: tar xvfj {{ ocroot }}/owncloud-9.0.2.tar.bz2
   tags:
     - owncloud
 
