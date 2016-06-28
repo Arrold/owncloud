@@ -1,0 +1,9 @@
+---
+- name: Create infrastructure
+  hosts: all
+  gather_facts: False
+  connection: local
+  roles:
+    - role: infra
+      tags:
+        - clc

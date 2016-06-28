@@ -1,19 +1,27 @@
 ---
-#- name: Get additional packages
-#  hosts: all
-#  gather_facts: True
-#  roles:
-#    - role: packages
-#      tag:
-#        - always
+- name: Install and configure MySQL
+  hosts: all
+  gather_facts: True
+  roles:
+    - role: mysql
+      tag:
+        - db
 
-#- name: Install Owncloud
-#  hosts: all
-#  gather_facts: False
-#  roles:
-#    - role: owncloud
-#      tags:
-#        - owncloud
+- name: Get additional packages
+  hosts: all
+  gather_facts: True
+  roles:
+    - role: packages
+      tag:
+        - always
+
+- name: Install Owncloud
+  hosts: all
+  gather_facts: False
+  roles:
+    - role: owncloud
+      tags:
+        - owncloud
 
 - name: Copy mysql.ini and owncloud.conf files over
   hosts: all

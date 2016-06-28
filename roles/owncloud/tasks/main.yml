@@ -1,38 +1,20 @@
 ---
 - name: Create directories
-  file: path=/datatemp/www state=directory
+  file: path=/{{ ocroot }}/www state=directory
   tags:
     - owncloud
 
 - name: Download owncloud tarball
-  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2
-  args:
-    chdir: /datatemp
-  tags:
-    - owncloud
-
-- name: Download owncloud tarball md5 file
-  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
-  args:
-    chdir: /datatemp
-  tags:
-    - owncloud
-
-- name: Sumcheck the tarball
-  shell: md5sum -c owncloud-9.0.2.tar.bz2.md5 < owncloud-9.0.2.tar.bz2
-  args:
-    chdir: /datatemp
+  get_url: https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest=/{{ ocroot }}/owncloud-9.0.2.tar.bz2 checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
   tags:
     - owncloud
 
 - name: Extract the tarball
-  shell: tar -xjf owncloud-9.0.2.tar.bz2
-  args:
-    chdir: /datatemp
+  unarchive: src=/{{ ocroot }}/owncloud-9.0.2.tar.bz2 dest=/{{ ocroot }}/
   tags:
     - owncloud
 
 - name: Copy data to wwwroot
-  shell: cp -r /datatemp/owncloud /datatemp/www/
+  shell: cp -r /{{ ocroot }}/owncloud /{{ ocroot }}/www/
   tags:
-    - owncloud 
+    - owncloud

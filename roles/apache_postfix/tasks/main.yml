@@ -1,6 +1,6 @@
 ---
 - name: Modify apache config
-  linefile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ ocroot }}/>
+  linefile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ permpath }}/>
   tags:
     - appost
 
@@ -26,5 +26,5 @@
     - appost
 
 - name: Copy example config.php to server
-  copy: src=files/example_config.php dest={{ ocpath }}/
+  copy: src=files/example_config.php dest={{ permpath }}/
     - appost
