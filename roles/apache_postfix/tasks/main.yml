@@ -5,7 +5,7 @@
     insertbefore: ^#<Directory /srv/>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-           <Directory /datatemp/www/owncloud>
+           <Directory {{ permpath }}/www/owncloud>
              Options Indexes FollowSymLinks
              AllowOverride None
              Require all granted
@@ -16,7 +16,7 @@
     dest: /etc/apache2/apache2.conf
     state: absent
     content: |
-      <Directory /var/www>
+      <Directory /var/www/>
         Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
@@ -43,7 +43,7 @@
     insertbefore: </VirtualHost>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-          <Directory /datatemp/www/owncloud>
+          <Directory {{ permpath }}/www/owncloud>
             Options Indexes FollowSymLinks
             AllowOverride All
             Order allow,deny
@@ -56,6 +56,6 @@
 
 - name: Copy example config.php to server
   copy: src=files/example_config.php dest={{ ocpath }}/example_config.php
-  
+
 - name: set permissions on www dir
-  shell: chmod -R 755 /datatemp/www/owncloud
+  shell: chmod -R 755 {{ permpath }}/www/owncloud
