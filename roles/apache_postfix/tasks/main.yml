@@ -58,4 +58,4 @@
   copy: src=files/example_config.php dest={{ ocpath }}/example_config.php
 
 - name: set permissions on www dir
-  shell: chmod -R 755 {{ permpath }}/www/owncloud
+  shell: chmod -R 755 {{ permpath }}
