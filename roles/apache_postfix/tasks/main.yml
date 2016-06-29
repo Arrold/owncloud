@@ -14,6 +14,19 @@
   tags:
     - appost
 
+- name: Remove the default www settings
+  blockinfile:
+    dest: /etc/apache2/apache2.conf
+    state: absent
+    content: |
+      <Directory /var/www>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+      </Directory>
+  tags:
+    - appost
+
 - name: Install apache modules
   apache2_module:
     state: present
