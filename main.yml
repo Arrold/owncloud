@@ -22,7 +22,7 @@
   roles:
     - role: packages
       tags:
-        - packages
+        - pkg
 
 - name: Install Owncloud
   hosts: oc_servers

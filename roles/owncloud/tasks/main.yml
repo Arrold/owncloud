@@ -1,25 +1,12 @@
 ---
 - name: Create directories
   file: path={{ ocroot }}/www state=directory
-  tags:
-    - owncloud
-
-#- name: Download owncloud
-#  shell: wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && wget https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2.md5
-#  args:
-#    chdir: "{{ ocroot }}"
 
 - name: Download owncloud tarball
   get_url: url=https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/owncloud-9.0.2.tar.bz2 validate_certs=no checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
-  tags:
-    - owncloud
 
 - name: unzip the bzip
   command: tar xvfj {{ ocroot }}/owncloud-9.0.2.tar.bz2
-  tags:
-    - owncloud
 
 - name: Copy data to wwwroot
-  shell: cp -r {{ ocroot }}/owncloud {{ ocroot }}/www/
-  tags:
-    - owncloud
+  shell: cp -r owncloud {{ ocroot }}/www/

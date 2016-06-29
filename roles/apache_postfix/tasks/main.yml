@@ -1,11 +1,9 @@
 ---
 - name: Modify apache config
-  lineinfile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ permpath }}/>
-  tags:
-    - appost
+  lineinfile: dest=/etc/apache2/apache2.conf regexp='^<Directory /var/www/>' line='<Directory {{ permpath }}/>'
 
 - name: Install apache modules
-  apache2_module: state=present name:{{ item }}
+  apache2_module: state=present name={{ item }}
   with_items:
     - rewrite
     - headers
@@ -13,13 +11,9 @@
     - dir
     - mime
     - ssl
-  tags:
-    - appost
 
 - name: Enable apache site
   shell: a2ensite default-ssl
-  tags:
-    - appost
 
 - name: Modify default-ssl.conf
   blockinfile:
@@ -33,16 +27,10 @@
             Order allow,deny
             allow from all
           </Directory>
-  tags:
-    - appost
   notify: Restart Apache
 
 - name: Configure postfix
   lineinfile: dest=/etc/postfix/main.cf state=present line='relayhost = relay.t3mx.com'
-  tags:
-    - appost
 
 - name: Copy example config.php to server
   copy: src=files/example_config.php dest={{ ocpath }}/example_config.php
-  tags:
-    - appost

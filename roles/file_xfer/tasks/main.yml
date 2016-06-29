@@ -1,23 +1,15 @@
 ---
 - name: Make /etc/php5/conf.d
   file: path=/etc/php5/conf.d state=directory
-  tags:
-    - always
 
 - name: Copy file to /etc/php5/conf.d/mysql.ini
   copy: src=files/mysql.ini dest=/etc/php5/conf.d/mysql.ini
-  tags:
-    - always
 
 - name: Copy file to /etc/apache2/sites-available/owncloud.conf
   copy: src=files/owncloud.conf dest=/etc/apache2/sites-available/owncloud.conf
-  tags:
-    - always
 
 - name: Create symbolic link to owncloud.conf
   file: src=/etc/apache2/sites-available/owncloud.conf dest=/etc/apache2/sites-enabled/owncloud.conf state=link
-  tags:
-    - always
 
 - name: Creates directories
   file: path=/{{ ocpath }}/{{ item }} state=directory owner={{ htuser }} group={{ htgroup }}
@@ -25,23 +17,15 @@
     - data
     - assets
     - updater
-  tags:
-    - always
 
 - name: Modify file and directory modes one
   shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640
-  tags:
-    - always
 
 - name: Modify file and directory modes two
   shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
-  tags:
-    - always
 
 - name: Modify permissions on ocpath
   file: path={{ ocpath }} state=directory owner=root group={{ htgroup }}
-  tags:
-    - always
 
 - name: Modify permissions on ocpath subdirs
   file: path={{ ocpath }}/{{ item }} state=directory owner={{ htuser }} group={{ htgroup }}
@@ -49,20 +33,12 @@
     - apps
     - config
     - themes
-  tags:
-    - always
 
 - name: Grant executer priviledges
   shell: chmod +x {{ ocpath }}/occ
-  tags:
-    - always
 
 - name: Modify .htaccess permissions one
   shell: if [ -f {{ ocpath }}/.htaccess ]; then chmod 0644 {{ ocpath }}/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/.htaccess; fi
-  tags:
-    - always
 
 - name: Modify .htaccess permissions two
   shell: if [ -f {{ ocpath }}/data/.htaccess ]; then chmod 0644 {{ ocpath }}/data/.htaccess; chown root:{{ htgroup }} {{ ocpath }}/data/.htaccess; fi
-  tags:
-    - always
