@@ -5,11 +5,11 @@
     insertbefore: #<Directory /srv/>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-    <Directory /data/www/owncloud>
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-</Directory>
+           <Directory /data/www/owncloud>
+             Options Indexes FollowSymLinks
+             AllowOverride None
+             Require all granted
+           </Directory>
 
   tags:
     - appost
@@ -45,7 +45,7 @@
             Order allow,deny
             allow from all
           </Directory>
-          
+
   tags:
     - appost
   notify: Restart Apache
