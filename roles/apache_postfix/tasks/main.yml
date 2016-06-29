@@ -1,9 +1,15 @@
 ---
 - name: Modify apache config
-  lineinfile:
+  blockinfile:
     dest: /etc/apache2/apache2.conf
-    regexp: ^<Directory /var/www/>
-    line: <Directory {{ permpath }}>
+    insertbefore: #<Directory /srv/>
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+    <Directory /data/www/owncloud>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
   tags:
     - appost
 
