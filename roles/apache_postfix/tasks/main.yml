@@ -2,7 +2,7 @@
 - name: Modify apache config
   blockinfile:
     dest: /etc/apache2/apache2.conf
-    insertbefore: #<Directory /srv/>
+    insertbefore: ^#<Directory /srv/>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
            <Directory /data/www/owncloud>
