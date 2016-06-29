@@ -2,6 +2,8 @@
 - name: Run only if it hasn't been done already
   stat: path={{ ocroot }}/www/owncloud
   register: st
+  tags:
+    - owncloud
 
 - name: Create directories
   file: path={{ ocroot }}/www state=directory
