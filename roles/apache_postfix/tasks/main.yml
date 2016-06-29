@@ -8,7 +8,9 @@
     - appost
 
 - name: Install apache modules
-  apache2_module: state=present name={{ item }}
+  apache2_module:
+    state: present
+    name: "{{ item }}"
   with_items:
     - rewrite
     - headers
