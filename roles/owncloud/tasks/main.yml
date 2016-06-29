@@ -23,7 +23,9 @@
 - name: Extract the Tarball
   shell: tar -xjf owncloud-9.0.2.tar.bz2
   args:
-  chdir: /datatemp
+    chdir: /datatemp
+  tags:
+    - owncloud
 
 - name: Copy data to wwwroot
   shell: cp -r {{ ocroot }}/owncloud {{ ocroot }}/www/
