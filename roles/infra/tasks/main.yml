@@ -1,7 +1,7 @@
 ---
 - name: create owncloud Group
   clc_group:
-    location: 'CA3'
+    location: 'DE1'
     name: owncloud
     state: present
   register: clc_grp
@@ -23,7 +23,7 @@
     exact_count: 1
     count_group: owncloud
     group: owncloud
-    location: 'CA3'
+    location: 'DE1'
     # network_id: 'vlan_1287_10.122.187'
     password: "{{ serverpass.stdout }}"
     cpu: 4
