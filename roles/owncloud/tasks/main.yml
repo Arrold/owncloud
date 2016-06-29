@@ -14,11 +14,16 @@
   tags:
     - owncloud
 
-- name: Extract the tarball
-  unarchive: src={{ ocroot }}/owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
+#- name: Extract the tarball
+#  unarchive: src={{ ocroot }}/owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
 #  unarchive: src=owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/
-  tags:
-    - owncloud
+#  tags:
+#    - owncloud
+
+- name: Extract the Tarball
+  shell: tar -xjf owncloud-9.0.2.tar.bz2
+  args:
+  chdir: /datatemp
 
 - name: Copy data to wwwroot
   shell: cp -r {{ ocroot }}/owncloud {{ ocroot }}/www/
