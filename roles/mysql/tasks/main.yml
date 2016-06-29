@@ -22,6 +22,7 @@
     - 127.0.0.1
     - ::1
     - localhost
+  ignore_errors: yes
   tags:
     - db
 
