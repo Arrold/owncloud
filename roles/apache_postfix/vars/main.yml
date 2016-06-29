@@ -1,5 +1,3 @@
 ---
-#permpath: "{{ permanent_path }}"
-#ocpath: "{{ owncloudpath }}"
-ocpath: "/datatemp/www/owncloud"
-permpath: "/data/www/owncloud"
+permpath: "{{ permanent_path }}"
+ocpath: "{{ owncloudpath }}"

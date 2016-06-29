@@ -22,7 +22,7 @@
   shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640
 
 - name: Modify file and directory modes two
-  shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0750
+  shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0755
 
 - name: Modify permissions on ocpath
   file: path={{ ocpath }} state=directory owner=root group={{ htgroup }}
