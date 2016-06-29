@@ -1,6 +1,10 @@
 ---
 - name: Modify apache config
-  lineinfile: dest=/etc/apache2/apache2.conf regexp=^<Directory /var/www/> line=<Directory {{ permpath }}/>
+  lineinfile:
+    dest:/etc/apache2/apache2.conf
+    state: present
+    regexp:^<Directory /var/www/>
+    line:<Directory {{ permpath }}>
   tags:
     - appost
 
