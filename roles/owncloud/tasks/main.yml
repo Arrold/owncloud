@@ -31,7 +31,7 @@
 - name: Extract the Tarball
   shell: tar -xjf owncloud-9.0.2.tar.bz2
   args:
-    chdir: {{ ocroot }}
+    chdir: "{{ ocroot }}"
   when: not st.stat.exists
   tags:
     - owncloud
