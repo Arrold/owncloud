@@ -1,0 +1,8 @@
+---
+- name: Configure apache and postfix
+  hosts: all
+  gather_facts: False
+  roles:
+    - role: apache_postfix
+      tags:
+        - appost

@@ -1,9 +1,31 @@
 ---
 - name: Modify apache config
-  lineinfile: dest=/etc/apache2/apache2.conf regexp='^<Directory /var/www/>' line='<Directory {{ permpath }}/>'
+  blockinfile:
+    dest: /etc/apache2/apache2.conf
+    insertbefore: ^#<Directory /srv/>
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+           <Directory /data/www/owncloud>
+             Options Indexes FollowSymLinks
+             AllowOverride None
+             Require all granted
+           </Directory>
+
+- name: Remove the default www settings
+  blockinfile:
+    dest: /etc/apache2/apache2.conf
+    state: absent
+    content: |
+      <Directory /var/www>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+      </Directory>
 
 - name: Install apache modules
-  apache2_module: state=present name={{ item }}
+  apache2_module:
+    state: present
+    name: "{{ item }}"
   with_items:
     - rewrite
     - headers

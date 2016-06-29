@@ -1,12 +1,9 @@
 ---
 - name: Install MySQL
   apt: package={{ item }} state=installed force=yes update_cache=yes cache_valid_time=3600
-  # when: ansible_os_family == 'Debian'
   with_items:
     - mysql-server
     - python-mysqldb
-  tags:
-    - db
 
 - name: Update mysql root password
   mysql_user:
@@ -22,13 +19,10 @@
     - 127.0.0.1
     - ::1
     - localhost
-  tags:
-    - db
+  ignore_errors: yes
 
 - name: Make the .my.cnf
   file: path=/root/.my.cnf state=touch mode="0640"
-  tags:
-    - db
 
 - name: Add content to .my.cnf
   blockinfile:
@@ -37,26 +31,16 @@
       [client]
       user=root
       password="{{ mysqlpass }}"
-  tags:
-    - db
 
 - name: Deletes anonymous MySQL server user for host
   mysql_user: user="" state="absent"
-  tags:
-    - db
 
 - name: Deletes anonymous MySQL server user for localhost
   mysql_user: user="" state="absent"
-  tags:
-    - db
 
 - name: Removes the MySQL test database
   mysql_db: name=test state=absent
-  tags:
-    - db
 
 - name: Create an owncloud database
   mysql_db: name=owncloud state=present
-  tags:
-    - db
   notify: Restart MySQL
