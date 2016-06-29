@@ -19,3 +19,5 @@ The high level tasks are as follows:
 * configure apache and postfix
 
 ### NOTES:
+Because ownCloud is a sort of private dropbox it's probable that a disk (partition) will need to be added to the instance to serve as storage, in the examples given this should be added to /data.
+Once the play is successful, add a disk, move the contents of /datatemp to /data, sign in to your VPN then hit the private IP at https://aa.bb.cc.dd/owncloud
