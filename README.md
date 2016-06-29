@@ -6,7 +6,7 @@ Create and ownCloud server in CLC cloud
 * owncloudpath # ex: /datatemp/www/owncloud
 * htaccess_user # ex: www-data
 * htaccess_group # ex: www-data
-* mysql_root_pass # ex: abc123!@#
+* mysql_root_pass # ex: "abc123!@#"
 * permanent_path # ex: /data/www/owncloud
 
 ### DESCRIPTION:
