@@ -58,6 +58,6 @@
     - always
 
 - name: Wait for a while
-  pause: minutes=2
+  pause: minutes=3
   tags:
     - always
