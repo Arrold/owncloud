@@ -19,7 +19,7 @@
     - updater
 
 - name: Modify file and directory modes one
-  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0640
+  shell: find {{ ocpath }}/ -type f -print0 | xargs -0 chmod 0755
 
 - name: Modify file and directory modes two
   shell: find {{ ocpath }}/ -type d -print0 | xargs -0 chmod 0755
