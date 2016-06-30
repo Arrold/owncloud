@@ -43,7 +43,7 @@
     server_ids:
       - "{{ clc_svr.servers[0].name }}"
     state: present
-    register: clcip
+  register: clcip
 
 - name: debug
   debug: var=clc
