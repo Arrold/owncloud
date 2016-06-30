@@ -5,11 +5,11 @@
     insertbefore: ^#<Directory /srv/>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-           <Directory /datatemp/www/owncloud>
-             Options Indexes FollowSymLinks
-             AllowOverride None
-             Require all granted
-           </Directory>
+      <Directory /data/www/owncloud>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+      </Directory>
 
 - name: Remove the default www settings
   blockinfile:
@@ -43,7 +43,7 @@
     insertbefore: </VirtualHost>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-          <Directory /datatemp/www/owncloud>
+          <Directory /data/www/owncloud>
             Options Indexes FollowSymLinks
             AllowOverride All
             Order allow,deny
@@ -58,4 +58,4 @@
   copy: src=files/example_config.php dest={{ ocpath }}/example_config.php
   
 - name: set permissions on www dir
-  shell: chmod -R 755 /datatemp/www/owncloud
+  shell: chmod -R 755 /data/www/owncloud
