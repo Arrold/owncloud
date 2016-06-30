@@ -40,6 +40,7 @@
     protocol: 'TCP'
     ports:
       - 80
+      - 443
     server_ids:
       - "{{ clc_svr.servers[0].name }}"
     state: present
