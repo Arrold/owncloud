@@ -1,7 +1,7 @@
 ---
 - name: create owncloud Group
   clc_group:
-    location: 'UC1'
+    location: 'DE1'
     name: owncloud
     state: present
   register: clc_grp
@@ -23,7 +23,7 @@
     exact_count: 1
     count_group: owncloud
     group: owncloud
-    location: 'UC1'
+    location: 'DE1'
     password: "{{ serverpass.stdout }}"
     cpu: 4
     memory: 8
