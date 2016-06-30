@@ -1,5 +1,0 @@
----
-ocroot: "{{ owncloudroot }}"
-ocpath: "{{ owncloudpath }}"
-htuser: "{{ htaccess_user }}"
-htgroup: "{{ htaccess_group }}"

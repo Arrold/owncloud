@@ -1,4 +1,4 @@
 ---
-ocpath: "{{ owncloudpath }}"
-htuser: "{{ htaccess_user }}"
-htgroup: "{{ htaccess_group }}"
+owncloud_path: /data_oc/www/owncloud
+htuser: www-data
+htgroup: www-data
