@@ -13,7 +13,7 @@
   roles:
     - role: packages
       tags:
-        - always
+        - pkg
 
 - name: Install Owncloud
   hosts: all
@@ -29,7 +29,7 @@
   roles:
     - role: file_xfer
       tags:
-        - always
+        - config
 
 - name: Configure apache and postfix
   hosts: all
