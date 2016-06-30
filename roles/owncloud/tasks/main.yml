@@ -1,6 +1,9 @@
 ---
 - name: Create directories
-  file: path=data_oc/www state=directory
+  file: path=/data_oc state=directory mode=0755
+
+- name: Create directories
+  file: path=/data_oc/www state=directory mode=0755
 
 - name: Download owncloud tarball
   get_url: url=https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest=/data_oc/owncloud-9.0.2.tar.bz2 validate_certs=no checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
