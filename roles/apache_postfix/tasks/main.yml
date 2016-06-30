@@ -46,7 +46,6 @@
           <Directory /data/www/owncloud>
             Options Indexes FollowSymLinks
             AllowOverride All
-            Order allow,deny
             Require all granted
           </Directory>
   notify: Restart Apache
