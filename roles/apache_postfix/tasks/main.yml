@@ -5,19 +5,11 @@
     insertbefore: ^#<Directory /srv/>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-<<<<<<< HEAD
-           <Directory {{ permpath }}>
-             Options Indexes FollowSymLinks
-             AllowOverride None
-             Require all granted
-           </Directory>
-=======
-      <Directory /data/www/owncloud>
+      <Directory {{ permpath }}>
         Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
       </Directory>
->>>>>>> 35246de4533702a294baa631448d6f5754ffb489
 
 - name: Remove the default www settings
   blockinfile:
@@ -51,15 +43,11 @@
     insertbefore: </VirtualHost>
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     block: |
-<<<<<<< HEAD
-          <Directory {{ permpath }}>
-=======
-          <Directory /data/www/owncloud>
->>>>>>> 35246de4533702a294baa631448d6f5754ffb489
-            Options Indexes FollowSymLinks
-            AllowOverride All
-            Require all granted
-          </Directory>
+      <Directory {{ permpath }}>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+      </Directory>
   notify: Restart Apache
 
 - name: Configure postfix
@@ -69,8 +57,4 @@
   copy: src=files/example_config.php dest={{ ocpath }}/example_config.php
 
 - name: set permissions on www dir
-<<<<<<< HEAD
   shell: chmod -R 755 {{ permpath }}
-=======
-  shell: chmod -R 755 /data/www/owncloud
->>>>>>> 35246de4533702a294baa631448d6f5754ffb489
