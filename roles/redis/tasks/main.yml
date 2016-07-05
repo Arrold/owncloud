@@ -35,7 +35,7 @@
   when: not rd.stat.exists
 
 - name: Clean up install files
-  file: path=/tmp/redis state=absent recursive=yes
+  file: path=/tmp/redis state=absent
 
 - name: Set overcommit memory setting
   # See: http://redis.io/topics/faq
