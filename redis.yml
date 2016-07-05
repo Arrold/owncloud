@@ -1,0 +1,8 @@
+---
+- name: Install and Enable Redis PHP module
+  hosts: oc_servers
+  gather_facts: True
+  roles:
+    - role: redis
+      tags:
+        - redistag
