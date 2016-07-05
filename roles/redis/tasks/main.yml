@@ -28,9 +28,11 @@
 
 - name: Make Redis
   shell: make -C /tmp/redis && make -C /tmp/redis install
+  when: not rd.stat.exists
 
 - name: Run install script
   shell: echo -n | /tmp/redis/utils/install_server.sh
+  when: not rd.stat.exists
 
 - name: Clean up install files
   file: path=/tmp/redis state=absent recursive=yes
