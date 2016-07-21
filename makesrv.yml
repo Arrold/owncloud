@@ -1,9 +1,0 @@
----
-- name: Create infrastructure
-  hosts: localhost
-  gather_facts: False
-  connection: local
-  roles:
-    - role: infra
-      tags:
-        - clc
