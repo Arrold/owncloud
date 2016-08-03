@@ -26,4 +26,4 @@ Once the play is successful, add a disk, move the contents of /datatemp to /data
 You must have a CenturyLink Cloud account to be able to use Runner
 
 ### ADDITIONAL STEPS
-Once the 
+Once the Server has been configured
