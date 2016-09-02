@@ -4,9 +4,9 @@ Create and ownCloud server in CLC cloud
 ## Parameters
 * datacenter # ex: GB3
 * owncloud_root # ex: /data_oc/www
-* htaccess_user # ex: www-data
-* htaccess_group # ex: www-data
-* mysql_root_pass # ex: "abc123!@#"
+* htuser # ex: www-data
+* htgroup # ex: www-data
+* mysqlpass # ex: "abc123!@#"
 
 ### DESCRIPTION:
 This playbook is designed to be called by Runner and will provision an Ubuntu 14.04 server in CenturyLink Cloud and deploys a working instance of ownCloud to it.
