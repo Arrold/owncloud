@@ -33,7 +33,7 @@
 - debug: var=clc_svr
 
 - name: Wait for SSH to Come up on Server
-  wait_for: host={{ clc_svr.servers[0].ipaddress }} port=22 delay=30 timeout=320 state=started
+  wait_for: host={{ clc_svr.servers[0].ipaddress }} port=22 delay=5 timeout=320 state=started
 
 - name: Create Public IP For Server
   clc_publicip:
@@ -44,7 +44,7 @@
     server_ids:
       - "{{ clc_svr.servers[0].name }}"
     state: present
-   register: clcip
+  register: clcip
 
 - name: debug
   debug: var=clcip

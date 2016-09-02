@@ -31,7 +31,7 @@
       [client]
       user=root
       password="{{ mysqlpass }}"
-
+      
 - name: Deletes anonymous MySQL server user for host
   mysql_user: user="" state="absent"
 

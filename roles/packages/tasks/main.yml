@@ -22,7 +22,6 @@
     - php5-mysql
     - php5-curl
 
-
 - name: Third list of packages
   apt:
     name: "{{ item }}"
@@ -33,16 +32,13 @@
     - php5-mcrypt
     - php5-imagick
 
-
 - name: Run manual install of php5-apcu/trusty-backports
   shell: apt-get install -y php5-apcu/trusty-backports
-
 
 - name: Install postfix
   apt:
     name: postfix
     state: present
-
 
 - name: Equivilent of apt-get upgrade
   apt: upgrade=dist
