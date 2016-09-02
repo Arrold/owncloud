@@ -1,2 +1,0 @@
----
-mysqlpass: "{{ mysql_root_pass }}"

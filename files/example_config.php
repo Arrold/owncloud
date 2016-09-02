@@ -8,7 +8,7 @@ $CONFIG = array (
     0 => 'PRIVATEIPADDRESS',
     1 => 'PUBLICIPADDRESS',
   ),
-  'datadirectory' => '/data/www/owncloud/data',
+  'datadirectory' => '/data_oc/www/owncloud/data',
   'overwrite.cli.url' => 'https://IPADDRESS/owncloud',
   'dbtype' => 'mysql',
   'version' => '9.0.2.2',

@@ -1,3 +1,4 @@
 ---
-permpath: "{{ permanent_path }}"
-ocpath: "{{ owncloudpath }}"
+owncloud_path: /data_oc/www/owncloud
+htuser: www-data
+htgroup: www-data

@@ -1,23 +1,23 @@
 ---
-- name: Run only if it hasn't been done already
-  stat: path={{ ocroot }}/www/owncloud
-  register: st
+- name: Create directories
+  file: path=/data_oc state=directory mode=0755
 
 - name: Create directories
-  file: path={{ ocroot }}/www state=directory
+  file: path=/data_oc/www state=directory mode=0755
 
 - name: Download owncloud tarball
-  get_url: url=https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest={{ ocroot }}/owncloud-9.0.2.tar.bz2 validate_certs=no checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
+  get_url: url=https://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 dest=/data_oc/owncloud-9.0.2.tar.bz2 validate_certs=no checksum=md5:a0131f5cae2b1503b8de6796487c1bdc
+
+- name: Run only if it hasn't been done already
+  stat: path=/data_oc/www/owncloud
+  register: st
 
 - name: Extract the Tarball
   shell: tar -xjf owncloud-9.0.2.tar.bz2
   args:
-    chdir: "{{ ocroot }}"
+    chdir: "/data_oc"
   when: not st.stat.exists
 
 - name: Copy data to wwwroot
-  shell: cp -r {{ ocroot }}/owncloud {{ ocroot }}/www/
+  shell: cp -r /data_oc/owncloud /data_oc/www/
   when: not st.stat.exists
-
-- name: set access permissions on www directory
-  shell: chmod -R 755 {{ocroot}}/www/owncloud
