@@ -21,3 +21,12 @@
 - name: Copy data to wwwroot
   shell: cp -r /data_oc/owncloud /data_oc/www/
   when: not st.stat.exists
+
+- name: Remove Documents default user folder
+  file: path=/data_oc/www/owncloud/core/skeleton/Documents state=absent
+
+- name: Remove Photos default user folder
+  file: path=/data_oc/www/owncloud/core/skeleton/Photos state=absent
+
+- name: Remove install directory
+  file: path=/data_oc/owncloud state=absent

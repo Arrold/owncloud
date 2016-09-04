@@ -19,13 +19,16 @@ The high level tasks are as follows:
 
 ### NOTES:
 Because ownCloud is a sort of private dropbox it's probable that a disk (partition) will need to be added to the instance to serve as storage, to do this I would move /data_oc to a temporary location, add a 'partition' mounted to /data_oc then move the contents of the original /data_oc into your new partition.
-Once the play is successful, hit the private IP at https://aa.bb.cc.dd/owncloud
+Once the play is successful, hit the private IP at http://aa.bb.cc.dd/owncloud
 
 ### PREREQUISITES
 You must have a CenturyLink Cloud account to be able to use Runner
 
 ### ADDITIONAL STEPS
-Once the Server has been configured there are some steps that need to be completed... (To be completed)
+Once the Server has been configured there are some steps that need to be completed.  When you log into the http address previously mentioned it will ask for an initial login and going through that login process generates the hashed passwords and such like in the config.php file below.
+
+Once that is done, change the http in that config.php file to become https and it should redirect you.
+You can also add the public IP here to the 'array' section and I've also added some sample email config that works in CenturyLink Cloud.
 
 ### EXAMPLE config.php
 ```

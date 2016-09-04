@@ -20,7 +20,7 @@
   clc_server:
     name: ocld
     template: ubuntu-14-64
-    exact_count: 1
+    count: 1
     count_group: owncloud
     group: owncloud
     location: "{{ datacenter }}"
