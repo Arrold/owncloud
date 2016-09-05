@@ -41,4 +41,4 @@
   shell: if [ -f {{ owncloud_path }}/.htaccess ]; then chmod 0644 {{ owncloud_path }}/.htaccess; chown root:{{ htgroup }} {{ owncloud_path }}/.htaccess; fi
 
 - name: Modify .htaccess permissions two
-  shell: if [ -f {{ owncloud_path }}/data/.htaccess ]; then chmod 0644 {{ owncloud_path }}/data/.htaccess; chown root:{{ htgroup }} {{ owncloud_path }}/data/.htaccess; fi
+  shell: if [ -f {{ owncloud_path }}/data/.htaccess ]; then chmod 0664 {{ owncloud_path }}/data/.htaccess; chown root:{{ htgroup }} {{ owncloud_path }}/data/.htaccess; fi

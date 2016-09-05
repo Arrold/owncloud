@@ -45,7 +45,7 @@
             Options Indexes FollowSymLinks
             AllowOverride All
             Order allow,deny
-            Require all granted
+            allow from all
           </Directory>
   notify: Restart Apache
 
